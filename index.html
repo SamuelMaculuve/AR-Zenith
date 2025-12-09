@@ -1,86 +1,104 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clothes</title>
-    <link rel="stylesheet" href="../Styles/product-styles.css" />
-    <link rel="stylesheet" href="../styles/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Clothes Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="images/AR_Zenith_Icon.png" type="image/png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
 </head>
-<body>
-    <div class="button-container">
-        <a href="../index.html" class="back-button">&#8592; Back</a>
-        <div class="right-buttons">
-          <a href="clothes.html" class="nav-button">Clothes</a>
-          <a href="education.html" class="nav-button">Education</a>
-          <a href="shoes.html" class="nav-button">Shoes</a>
-        </div>
-      </div>
-      
-    <div class="product-container">
-        <a href="Pages/products/caro-flannel-shirt.html" class="product-box">
-            <img src="images/clothes/caro-flannel-shirt-removebg-preview.png" alt="Caro Flannel Shirt" class="product-image" />
-            <h2 class="product-name">Caro Flannel Shirt</h2>
-            <p class="product-price">$25.99</p>
-            <p class="product-description">A timeless classic cotton shirt, perfect for any occasion.</p>
-        </a>
-        <a href="Pages/products/denim-jacket.html" class="product-box">
-            <img src="images/clothes/denim-jacket-removebg-preview.png" alt="Denim Jacket" class="product-image" />
-            <h2 class="product-name">Denim Jacket</h2>
-            <p class="product-price">$49.99</p>
-            <p class="product-description">Stylish denim jacket, durable and fashionable.</p>
-        </a>
-        <a href="Pages/products/medeival-gown.html" class="product-box">
-            <img src="images/clothes/gown-removebg-preview.png" alt="Medieval Gown" class="product-image" />
-            <h2 class="product-name">Gown</h2>
-            <p class="product-price">$339.99</p>
-            <p class="product-description">Elegant evening dress with a modern cut.</p>
-        </a>
-        <a href="Pages/products/gold-dress.html" class="product-box">
-            <img src="images/clothes/gold-dress-removebg-preview.png" alt="Gold Dress" class="product-image" />
-            <h2 class="product-name">Female Dress</h2>
-            <p class="product-price">$79.99</p>
-            <p class="product-description">Comfortable and stylish for any occasion.</p>
-        </a>
-        <a href="Pages/products/sweatshirt.html" class="product-box">
-            <img src="../images/clothes/sweatshirt.png" alt="Sweat Shirt" class="product-image" />
-            <h2 class="product-name">Sweat Shirt</h2>
-            <p class="product-price">$89.99</p>
-            <p class="product-description">A cozy choice for chilly days.</p>
-        </a>
-        <a href="Pages/products/pleated-skirt.html" class="product-box">
-            <img src="images/clothes/pleated-skirt-removebg-preview.png" alt="Pleated Skirt" class="product-image" />
-            <h2 class="product-name">Pleated Skirt</h2>
-            <p class="product-price">$15.99</p>
-            <p class="product-description">A versatile addition to your wardrobe.</p>
-        </a>
-        <a href="Pages/products/tailcoat-suit.html" class="product-box">
-            <img src="images/clothes/tailcoat-suit-removebg-preview.png" alt="Tailcoat Suit" class="product-image" />
-            <h2 class="product-name">Tailcoat Suit</h2>
-            <p class="product-price">$45.99</p>
-            <p class="product-description">Classic design for formal occasions.</p>
-        </a>
-        <a href="Pages/products/agbada.html" class="product-box">
-            <img src="images/clothes/agbada-removebg-preview.png" alt="Agbada" class="product-image" />
-            <h2 class="product-name">Agbada</h2>
-            <p class="product-price">$59.99</p>
-            <p class="product-description">Traditional wear for special events.</p>
-        </a>
+
+<body class="bg-gray-100 pb-24">
+
+<!-- ✅ HEADER -->
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+    <div class="p-4 flex justify-between items-center">
+        <h1 class="text-xl font-semibold">Explore</h1>
+        <button class="text-gray-500">📍</button>
     </div>
 
-    <section class="footer">
-      <p>
-        &copy; 2024
-        <a href="https://github.com/nif-oye" target="_blank"><b>@nif_oye</b></a
-        >. All rights reserved.
-      </p>
-    </section>
+    <div class="px-4 pb-4">
+        <div class="relative">
+            <input type="text" placeholder="Search products..."
+                   class="w-full pl-4 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring">
+            <span class="absolute right-3 top-2.5 text-gray-400">🔍</span>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ PRODUCTS GRID -->
+<main class="p-4 grid grid-cols-2 gap-4">
+
+    <!-- PRODUCT CARD -->
+    <a href="#" class="bg-white rounded-xl shadow-sm p-3">
+        <img src="images/clothes/caro-flannel-shirt-removebg-preview.png"
+             class="h-32 w-full object-contain mb-2">
+        <h2 class="text-sm font-semibold">Caro Flannel</h2>
+        <p class="text-red-500 font-bold">$25.99</p>
+    </a>
+
+    <a href="#" class="bg-white rounded-xl shadow-sm p-3">
+        <img src="images/clothes/denim-jacket-removebg-preview.png"
+             class="h-32 w-full object-contain mb-2">
+        <h2 class="text-sm font-semibold">Denim Jacket</h2>
+        <p class="text-red-500 font-bold">$49.99</p>
+    </a>
+
+    <a href="#" class="bg-white rounded-xl shadow-sm p-3">
+        <img src="images/clothes/gown-removebg-preview.png"
+             class="h-32 w-full object-contain mb-2">
+        <h2 class="text-sm font-semibold">Gown</h2>
+        <p class="text-red-500 font-bold">$339.99</p>
+    </a>
+
+    <a href="#" class="bg-white rounded-xl shadow-sm p-3">
+        <img src="images/clothes/gold-dress-removebg-preview.png"
+             class="h-32 w-full object-contain mb-2">
+        <h2 class="text-sm font-semibold">Female Dress</h2>
+        <p class="text-red-500 font-bold">$79.99</p>
+    </a>
+
+</main>
+
+<!-- ✅ FOOTER NAV (APP STYLE) -->
+<footer class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md">
+    <nav class="flex justify-around py-3 text-xs text-gray-500">
+
+        <a href="../index.html" class="flex flex-col items-center text-red-500">
+            🏠
+            <span>Home</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center">
+            🗂️
+            <span>Categories</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center">
+            🛒
+            <span>Cart</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center">
+            🔔
+            <span>Alerts</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center">
+            👤
+            <span>Profile</span>
+        </a>
+
+    </nav>
+</footer>
+
 </body>
 </html>
