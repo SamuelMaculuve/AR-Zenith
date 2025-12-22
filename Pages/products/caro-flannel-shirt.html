@@ -100,30 +100,5 @@
 
     </div>
 </nav>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const arButton = document.getElementById("default-ar-button");
-  const svg = arButton?.querySelector("svg");
-
-  if (!arButton || !svg) return;
-
-  let isText = false;
-
-  arButton.addEventListener("click", () => {
-    if (!isText) {
-      svg.style.display = "none";
-      arButton.textContent = "testar";
-    } else {
-      arButton.textContent = "";
-      arButton.appendChild(svg);
-      svg.style.display = "block";
-    }
-    isText = !isText;
-  });
-});
-</script>
-
-
-
 </body>
 </html>
