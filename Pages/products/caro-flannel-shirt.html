@@ -68,6 +68,9 @@
         <button class="flex-1 bg-red-500 text-white rounded-xl py-3 text-sm font-semibold">
             Add to cart
         </button>
+      <a class="flex-1 bg-red-500 text-white rounded-xl py-3 text-sm font-semibold" id="default-ar-button" part="default-ar-button" class="fab" tabindex="2" role="button" href="javascript:void(0);" aria-label="View in your space">
+       Testar
+      </a>
     </div>
 
 </section>
@@ -100,18 +103,7 @@
 
     </div>
 </nav>
-    <script>
-const viewer = document.getElementById("viewer");
-
-viewer.addEventListener("load", () => {
-  const arButton = viewer.shadowRoot
-    ?.querySelector("#default-ar-button");
-
-  if (arButton) {
-    arButton.innerHTML = "testar";
-  }
-});
-</script>
+  
 
 </body>
 </html>
