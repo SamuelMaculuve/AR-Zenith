@@ -68,9 +68,11 @@
         <button class="flex-1 bg-red-500 text-white rounded-xl py-3 text-sm font-semibold">
             Add to cart
         </button>
-      <a class="flex-1 bg-red-500 text-white rounded-xl py-3 text-sm font-semibold" id="default-ar-button" part="default-ar-button" class="fab" tabindex="2" role="button" href="javascript:void(0);" aria-label="View in your space">
-       Testar
+     <slot name="ar-button">
+      <a id="default-ar-button" part="default-ar-button" class="fab" tabindex="2" role="button" href="javascript:void(0);" aria-label="View in your space">
+        Testar
       </a>
+    </slot>
     </div>
 
 </section>
