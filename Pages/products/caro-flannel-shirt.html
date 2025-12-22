@@ -100,6 +100,32 @@
 
     </div>
 </nav>
+<script>
+    const button = document.getElementById("default-ar-button");
+    const content = document.getElementById("ar-content");
+    const original = content.innerHTML;
+
+    function typeText(text, speed = 90) {
+        content.innerHTML = '<span class="typing"></span>';
+        const el = content.querySelector(".typing");
+        let i = 0;
+
+        const interval = setInterval(() => {
+            el.textContent += text[i];
+            i++;
+            if (i === text.length) clearInterval(interval);
+        }, speed);
+    }
+
+    button.addEventListener("click", () => {
+        typeText("Testar em AR");
+
+        // volta ao ícone após 2.8s
+        setTimeout(() => {
+            content.innerHTML = original;
+        }, 2800);
+    });
+</script>
 
 </body>
 </html>
