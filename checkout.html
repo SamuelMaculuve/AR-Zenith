@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+
+<body class="bg-gray-100 pb-36">
+
+<!-- ✅ HEADER -->
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+    <div class="p-4 flex items-center gap-3">
+        <a href="javascript:history.back()" class="text-xl">←</a>
+        <img src="../../images/logo_reteiller.png" class="h-8">
+        <h1 class="font-semibold text-lg">Checkout</h1>
+    </div>
+</header>
+
+<!-- ✅ PRODUCT SUMMARY -->
+<section class="bg-white p-4 mt-3 rounded-xl mx-4 shadow-sm">
+    <h2 class="font-semibold mb-3">Order summary</h2>
+
+    <div class="flex gap-4">
+        <img src="../../images/clothes/caro-flannel-shirt-removebg-preview.png"
+             class="h-20 w-20 object-contain bg-gray-100 rounded-lg">
+
+        <div class="flex-1">
+            <p class="font-semibold">Caro Flannel Shirt</p>
+            <p class="text-sm text-gray-500">Size: M</p>
+
+            <div class="flex justify-between items-center mt-2">
+                <span class="text-red-500 font-bold">300.00 MT</span>
+
+                <!-- Quantity -->
+                <div class="flex items-center border rounded-lg">
+                    <button class="px-3 py-1 text-gray-500">−</button>
+                    <span class="px-3 text-sm">1</span>
+                    <button class="px-3 py-1 text-gray-500">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ✅ DELIVERY ADDRESS -->
+<section class="bg-white p-4 mt-3 rounded-xl mx-4 shadow-sm">
+    <h2 class="font-semibold mb-3">Delivery address</h2>
+
+    <input type="text"
+           placeholder="Full name"
+           class="w-full border rounded-lg px-3 py-2 mb-2">
+
+    <input type="text"
+           placeholder="Phone number"
+           class="w-full border rounded-lg px-3 py-2 mb-2">
+
+    <textarea placeholder="Delivery address"
+              class="w-full border rounded-lg px-3 py-2"></textarea>
+</section>
+
+<!-- ✅ PAYMENT METHOD -->
+<section class="bg-white p-4 mt-3 rounded-xl mx-4 shadow-sm">
+    <h2 class="font-semibold mb-3">Payment method</h2>
+
+    <label class="flex items-center gap-3 mb-2">
+        <input type="radio" name="payment" checked>
+        <span>💳 Card</span>
+    </label>
+
+    <label class="flex items-center gap-3 mb-2">
+        <input type="radio" name="payment">
+        <span>📱 M-Pesa</span>
+    </label>
+
+    <label class="flex items-center gap-3">
+        <input type="radio" name="payment">
+        <span>💵 Cash on delivery</span>
+    </label>
+</section>
+
+<!-- ✅ PRICE SUMMARY -->
+<section class="bg-white p-4 mt-3 rounded-xl mx-4 shadow-sm">
+    <h2 class="font-semibold mb-3">Payment summary</h2>
+
+    <div class="flex justify-between text-sm mb-1">
+        <span>Subtotal</span>
+        <span>300.00 MT</span>
+    </div>
+
+    <div class="flex justify-between text-sm mb-1">
+        <span>Delivery</span>
+        <span>50.00 MT</span>
+    </div>
+
+    <div class="flex justify-between font-semibold text-lg mt-3">
+        <span>Total</span>
+        <span class="text-red-500">350.00 MT</span>
+    </div>
+</section>
+
+<!-- ✅ CONFIRM BUTTON -->
+<footer class="fixed bottom-16 left-0 right-0 px-4">
+    <button class="w-full bg-black text-white py-4 rounded-2xl font-semibold">
+        Confirm & Pay
+    </button>
+</footer>
+
+<!-- ✅ APP BOTTOM NAV -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md">
+    <div class="flex justify-around py-3 text-xs text-gray-500">
+
+        <a href="../index.html" class="flex flex-col items-center">
+            🏠
+            <span>Home</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center text-black font-semibold">
+            🛒
+            <span>Cart</span>
+        </a>
+
+        <a href="#" class="flex flex-col items-center">
+            👤
+            <span>Profile</span>
+        </a>
+
+    </div>
+</nav>
+
+</body>
+</html>
 
