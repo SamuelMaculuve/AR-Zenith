@@ -1,4 +1,4 @@
-# **E-Commerce AR Shopping Experience - Project Documentation**
+# **Glória Govene E-Commerce AR Shopping Experience  Documentation**
 
 ## **Project Overview**
 A fully dynamic, mobile-first e-commerce platform with AR product visualization capabilities. The application allows users to browse products, view them in 3D/AR, add items to cart, and complete purchases - all with persistent data storage using localStorage.
