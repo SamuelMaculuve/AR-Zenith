@@ -4,168 +4,129 @@
     <meta charset="UTF-8">
     <title>Clothes Store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
     <style>
         body { font-family: 'Montserrat', sans-serif; }
     </style>
 </head>
 
 <body class="bg-gray-100 pb-24">
-
-<!-- ✅ HEADER -->
-<header class="bg-white sticky top-0 z-50 shadow-sm">
-    
-    <!-- Top bar -->
-    <div class="p-4 flex justify-between items-center">
+    <!-- HEADER -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="p-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="images/logo_reteiller.png" alt="Logo" class="h-10 w-auto object-contain">
+            </div>
+            <button class="text-gray-500 text-xl">📍</button>
+        </div>
         
-        <!-- Logo + título -->
-        <div class="flex items-center gap-3">
-            <img src="images/logo_reteiller.png"
-                 alt="Logo"
-                 class="h-10 w-auto object-contain">
+        <div class="px-4 pb-4">
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="Search products..." class="w-full pl-4 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-gray-200">
+                <span class="absolute right-3 top-2.5 text-gray-400">🔍</span>
+            </div>
         </div>
+    </header>
 
-        <!-- Ícone localização -->
-        <button class="text-gray-500 text-xl">
-            📍
-        </button>
+    <!-- FILTERS -->
+    <div class="px-4 py-2 flex gap-2 overflow-x-auto">
+        <button class="filter-btn px-4 py-2 rounded-full bg-white border text-sm whitespace-nowrap" data-category="all">All</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-white border text-sm whitespace-nowrap" data-category="clothes">Clothes</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-white border text-sm whitespace-nowrap" data-category="shoes">Shoes</button>
     </div>
 
-    <!-- Search -->
-    <div class="px-4 pb-4">
-        <div class="relative">
-            <input type="text"
-                   placeholder="Search products..."
-                   class="w-full pl-4 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-gray-200">
+    <!-- PRODUCTS GRID -->
+    <main class="p-4 grid grid-cols-2 gap-4" id="productsGrid"></main>
+
+    <!-- FOOTER -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md">
+        <nav class="flex justify-around py-3 text-xs text-gray-500">
+            <a href="index.html" class="flex flex-col items-center text-red-500">
+                🏠 <span>Home</span>
+            </a>
+            <a href="cart.html" class="flex flex-col items-center relative">
+                🛒 <span>Cart</span>
+                <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+            </a>
+            <a href="#" class="flex flex-col items-center">👤 <span>Profile</span></a>
+        </nav>
+    </footer>
+
+    <script src="products.js"></script>
+    <script>
+        // Inicializar carrinho se não existir
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+
+        // Atualizar contador do carrinho
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = document.getElementById('cartCount');
+            cartCount.textContent = cart.length;
+            cartCount.classList.toggle('hidden', cart.length === 0);
+        }
+
+        // Renderizar produtos
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
             
-            <span class="absolute right-3 top-2.5 text-gray-400">
-                🔍
-            </span>
-        </div>
-    </div>
+            filteredProducts.forEach(product => {
+                const link = document.createElement('a');
+                link.href = `product.html?id=${product.id}`;
+                link.className = 'bg-white rounded-xl shadow-sm p-3 hover:shadow-md transition-shadow';
+                link.innerHTML = `
+                    <img src="${product.image}" class="h-32 w-full object-contain mb-2" alt="${product.name}">
+                    <h2 class="text-sm font-semibold">${product.name}</h2>
+                    <p class="text-red-500 font-bold">${product.price.toFixed(2)} MT</p>
+                `;
+                grid.appendChild(link);
+            });
+        }
 
-</header>
+        // Filtrar produtos
+        function filterProducts(category = 'all', search = '') {
+            let filtered = products;
+            
+            if (category !== 'all') {
+                filtered = filtered.filter(p => p.category === category);
+            }
+            
+            if (search) {
+                const searchTerm = search.toLowerCase();
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm) ||
+                    p.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            renderProducts(filtered);
+        }
 
-
-<!-- ✅ PRODUCTS GRID -->
-<main class="p-4 grid grid-cols-2 gap-4">
-
-    <!-- PRODUCT CARD -->
-    <a href="Pages/products/caro-flannel-shirt.html" class="bg-white rounded-xl shadow-sm p-3">
-        <img src="images/clothes/caro-flannel-shirt-removebg-preview.png"
-             class="h-32 w-full object-contain mb-2">
-        <h2 class="text-sm font-semibold">Caro Flannel</h2>
-        <p class="text-red-500 font-bold">25.99 MT</p>
-    </a>
-
-    <a href="Pages/products/denim-jacket.html" class="bg-white rounded-xl shadow-sm p-3">
-        <img src="images/clothes/denim-jacket-removebg-preview.png"
-             class="h-32 w-full object-contain mb-2">
-        <h2 class="text-sm font-semibold">Denim Jacket</h2>
-        <p class="text-red-500 font-bold">49.99 MT</p>
-    </a>
-
-    <a href="Pages/products/gold-dress.html" class="bg-white rounded-xl shadow-sm p-3">
-        <img src="images/clothes/gold-dress-removebg-preview.png"
-             class="h-32 w-full object-contain mb-2">
-        <h2 class="text-sm font-semibold">Female Dress</h2>
-        <p class="text-red-500 font-bold">79.99 MT</p>
-    </a>
-
-<a href="Pages/products/sweatshirt.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/clothes/sweatshirt.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Sweat Shirt</h2>
-    <p class="text-red-500 font-bold">89.99 MT</p>
-</a>
-
-<a href="Pages/products/pleated-skirt.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/clothes/pleated-skirt-removebg-preview.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Pleated Skirt</h2>
-    <p class="text-red-500 font-bold">15.99 MT</p>
-</a>
-
-<a href="Pages/products/tailcoat-suit.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/clothes/tailcoat-suit-removebg-preview.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Tailcoat Suit</h2>
-    <p class="text-red-500 font-bold">45.99 MT</p>
-</a>
-
-<!-- SAPATOS -->
-
-<a href="Pages/shoes/sneakers.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/shoes/sneakers.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Stylish Sneakers</h2>
-    <p class="text-red-500 font-bold">59.99 MT</p>
-</a>
-
-<a href="Pages/shoes/leather-boots.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/shoes/boots-removebg-preview.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Leather Boots</h2>
-    <p class="text-red-500 font-bold">129.99 MT</p>
-</a>
-
-<a href="Pages/shoes/loafers.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/shoes/loafers-removebg-preview.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Classic Loafers</h2>
-    <p class="text-red-500 font-bold">89.99 MT</p>
-</a>
-
-<a href="Pages/shoes/high-heels.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/shoes/high-heels.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Elegant High Heels</h2>
-    <p class="text-red-500 font-bold">99.99 MT</p>
-</a>
-
-<a href="Pages/shoes/oxfords.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/shoes/oxfords.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Classic Oxfords</h2>
-    <p class="text-red-500 font-bold">109.99 MT</p>
-</a>
-
-<a href="Pages/shoes/slip-ons.html" class="bg-white rounded-xl shadow-sm p-3">
-    <img src="../images/shoes/slip-on.png"
-         class="h-32 w-full object-contain mb-2">
-    <h2 class="text-sm font-semibold">Casual Slip-ons</h2>
-    <p class="text-red-500 font-bold">49.99 MT</p>
-</a>
-
-    
-</main>
-
-<!-- ✅ FOOTER NAV (APP STYLE) -->
-<footer class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md">
-    <nav class="flex justify-around py-3 text-xs text-gray-500">
-
-        <a href="../index.html" class="flex flex-col items-center text-red-500">
-            🏠
-            <span>Home</span>
-        </a>
-
-        <a href="#" class="flex flex-col items-center">
-            🛒
-            <span>Cart</span>
-        </a>
-        <a href="#" class="flex flex-col items-center">
-            👤
-            <span>Profile</span>
-        </a>
-
-    </nav>
-</footer>
-
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            filterProducts();
+            
+            // Eventos dos filtros
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('bg-red-500', 'text-white');
+                    });
+                    btn.classList.add('bg-red-500', 'text-white');
+                    filterProducts(btn.dataset.category, document.getElementById('searchInput').value);
+                });
+            });
+            
+            // Evento de busca
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const activeFilter = document.querySelector('.filter-btn.bg-red-500');
+                filterProducts(activeFilter?.dataset.category || 'all', e.target.value);
+            });
+        });
+    </script>
 </body>
 </html>
