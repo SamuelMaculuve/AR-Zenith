@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        
+        .order-card {
+            transition: transform 0.2s ease;
+        }
+        
+        .order-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-processing { background-color: #fef3c7; color: #92400e; }
+        .status-shipped { background-color: #dbeafe; color: #1e40af; }
+        .status-delivered { background-color: #d1fae5; color: #065f46; }
+        .status-cancelled { background-color: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen pb-24">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="px-4 py-3 flex justify-between items-center">
+            <a href="profile.html" class="text-xl">
+                <i class="fas fa-arrow-left text-gray-700"></i>
+            </a>
+            <h1 class="text-lg font-semibold">My Orders</h1>
+            <div class="w-8"></div> <!-- Spacer for symmetry -->
+        </div>
+    </header>
+    
+    <!-- Filter Tabs -->
+    <div class="px-4 pt-4 pb-2 flex overflow-x-auto gap-2">
+        <button data-filter="all" class="filter-btn px-4 py-2 rounded-full bg-red-500 text-white font-medium text-sm whitespace-nowrap">
+            All Orders
+        </button>
+        <button data-filter="processing" class="filter-btn px-4 py-2 rounded-full bg-white border font-medium text-sm whitespace-nowrap">
+            Processing
+        </button>
+        <button data-filter="shipped" class="filter-btn px-4 py-2 rounded-full bg-white border font-medium text-sm whitespace-nowrap">
+            Shipped
+        </button>
+        <button data-filter="delivered" class="filter-btn px-4 py-2 rounded-full bg-white border font-medium text-sm whitespace-nowrap">
+            Delivered
+        </button>
+    </div>
+    
+    <!-- Orders List -->
+    <main class="px-4 mt-2">
+        <div id="ordersContainer">
+            <!-- Orders will be loaded here -->
+            <div class="text-center py-16">
+                <i class="fas fa-shopping-bag text-5xl text-gray-300 mb-4"></i>
+                <h3 class="text-lg font-semibold text-gray-500 mb-2">No orders yet</h3>
+                <p class="text-gray-400 text-sm mb-6">When you place orders, they will appear here</p>
+                <a href="index.html" class="inline-block bg-black text-white px-6 py-3 rounded-xl font-semibold">
+                    Start Shopping
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md">
+        <div class="flex justify-around py-3 text-xs">
+            <a href="index.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-home text-lg"></i>
+                <span class="mt-1">Home</span>
+            </a>
+            
+            <a href="cart.html" class="flex flex-col items-center text-gray-500 relative">
+                <i class="fas fa-shopping-cart text-lg"></i>
+                <span class="mt-1">Cart</span>
+                <span id="cartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden"></span>
+            </a>
+            
+            <a href="profile.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-user text-lg"></i>
+                <span class="mt-1">Profile</span>
+            </a>
+        </div>
+    </nav>
+    
+    <script>
+        // Get orders from localStorage
+        function getOrders() {
+            return JSON.parse(localStorage.getItem('clothes_store_orders')) || [];
+        }
+        
+        // Get cart count
+        function getCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            return cart.reduce((total, item) => total + item.quantity, 0);
+        }
+        
+        // Render orders
+        function renderOrders(filter = 'all') {
+            const orders = getOrders();
+            const container = document.getElementById('ordersContainer');
+            
+            if (orders.length === 0) {
+                return; // Keep default empty state
+            }
+            
+            // Filter orders if needed
+            let filteredOrders = orders;
+            if (filter !== 'all') {
+                filteredOrders = orders.filter(order => order.status === filter);
+            }
+            
+            if (filteredOrders.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16">
+                        <i class="fas fa-filter text-5xl text-gray-300 mb-4"></i>
+                        <h3 class="text-lg font-semibold text-gray-500 mb-2">No ${filter} orders</h3>
+                        <p class="text-gray-400 text-sm">You don't have any ${filter} orders</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort by date (newest first)
+            filteredOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            let ordersHTML = '';
+            
+            filteredOrders.forEach(order => {
+                // Calculate total
+                const subtotal = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const total = subtotal + 50; // + delivery
+                
+                // Format date
+                const orderDate = new Date(order.date);
+                const formattedDate = orderDate.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                
+                // Get status class and icon
+                let statusClass = 'status-processing';
+                let statusIcon = 'fas fa-clock';
+                
+                switch(order.status) {
+                    case 'shipped':
+                        statusClass = 'status-shipped';
+                        statusIcon = 'fas fa-shipping-fast';
+                        break;
+                    case 'delivered':
+                        statusClass = 'status-delivered';
+                        statusIcon = 'fas fa-check-circle';
+                        break;
+                    case 'cancelled':
+                        statusClass = 'status-cancelled';
+                        statusIcon = 'fas fa-times-circle';
+                        break;
+                }
+                
+                ordersHTML += `
+                    <div class="order-card bg-white rounded-2xl shadow-sm p-4 mb-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <div>
+                                <p class="font-bold">Order #${order.id.toString().slice(-6)}</p>
+                                <p class="text-gray-500 text-sm">${formattedDate}</p>
+                            </div>
+                            <span class="${statusClass} status-badge">
+                                <i class="${statusIcon} mr-1"></i>
+                                ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                            </span>
+                        </div>
+                        
+                        <div class="border-t pt-3">
+                            ${order.items.slice(0, 2).map(item => `
+                                <div class="flex items-center mb-2">
+                                    <img src="${item.image}" class="h-12 w-12 object-contain bg-gray-100 rounded-lg mr-3">
+                                    <div class="flex-1">
+                                        <p class="text-sm font-medium">${item.name}</p>
+                                        <p class="text-xs text-gray-500">Qty: ${item.quantity} × ${item.price.toFixed(2)} MT</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                            
+                            ${order.items.length > 2 ? `
+                                <div class="text-center text-sm text-gray-500 py-2">
+                                    + ${order.items.length - 2} more item${order.items.length - 2 > 1 ? 's' : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="border-t pt-3 flex justify-between items-center">
+                            <p class="text-sm text-gray-600">
+                                ${order.items.length} item${order.items.length > 1 ? 's' : ''}
+                            </p>
+                            <div class="text-right">
+                                <p class="text-sm text-gray-500">Total</p>
+                                <p class="text-lg font-bold">${total.toFixed(2)} MT</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t pt-3 mt-3 flex gap-2">
+                            <button class="flex-1 border border-gray-300 rounded-xl py-2 text-sm font-medium hover:bg-gray-50">
+                                View Details
+                            </button>
+                            ${order.status === 'delivered' ? `
+                                <button class="flex-1 bg-red-500 text-white rounded-xl py-2 text-sm font-medium hover:bg-red-600">
+                                    Buy Again
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = ordersHTML;
+        }
+        
+        // Update cart count
+        function updateCartCount() {
+            const cartCount = getCartCount();
+            const badge = document.getElementById('cartCount');
+            
+            if (cartCount > 0) {
+                badge.textContent = cartCount;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            renderOrders();
+            
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('bg-red-500', 'text-white');
+                        b.classList.add('bg-white', 'border');
+                    });
+                    
+                    btn.classList.remove('bg-white', 'border');
+                    btn.classList.add('bg-red-500', 'text-white');
+                    
+                    // Filter orders
+                    renderOrders(btn.dataset.filter);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
