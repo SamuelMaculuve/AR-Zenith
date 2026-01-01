@@ -70,6 +70,8 @@ A fully dynamic, mobile-first e-commerce platform with AR product visualization 
 ├── product.html            # Product details with AR viewer
 ├── cart.html               # Shopping cart management
 ├── checkout.html           # Checkout and payment process
+├── cart.html
+├── orders.html  
 ├── products.js             # Central product database
 ├── images/                 # Product images and logos
 ├── Models/                 # 3D models for AR visualization
