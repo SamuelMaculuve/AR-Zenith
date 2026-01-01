@@ -3,109 +3,109 @@ const products = [
     {
         id: 1,
         name: "Caro Flannel 2",
-        price: 25.99,
+        price: 39.99,
         image: "images/clothes/caro-flannel-shirt-removebg-preview.png",
         category: "clothes",
         model: "Models/Products/clothes/mens_caro_flannel_shirt.glb",
-        description: "A timeless classic cotton shirt, perfect for any occasion."
+        description: "A premium cotton flannel shirt designed for comfort and versatility, perfect for both casual outings and smart-casual looks."
     },
     {
         id: 2,
         name: "Denim Jacket",
-        price: 49.99,
+        price: 79.99,
         image: "images/clothes/denim-jacket-removebg-preview.png",
         category: "clothes",
         model: "Models/Products/clothes/modern_denim_jacket.glb",
-        description: "Classic denim jacket for casual style."
+        description: "A modern denim jacket crafted with durable fabric, offering a timeless silhouette that pairs effortlessly with any casual wardrobe."
     },
     {
         id: 3,
         name: "Female Dress",
-        price: 79.99,
+        price: 129.99,
         image: "images/clothes/gold-dress-removebg-preview.png",
         category: "clothes",
         model: "Models/Products/clothes/female-dress.glb",
-        description: "Elegant golden dress for special occasions."
+        description: "An elegant golden dress with a refined finish, designed to make a statement at formal events and special occasions."
     },
     {
         id: 4,
         name: "Sweat Shirt",
-        price: 89.99,
+        price: 69.99,
         image: "images/clothes/sweatshirt.png",
         category: "clothes",
         model: "Models/Products/clothes/sweatshirt.glb",
-        description: "Comfortable sweatshirt for everyday wear."
+        description: "A soft and comfortable sweatshirt made for everyday wear, combining warmth, durability, and a clean contemporary style."
     },
     {
         id: 5,
         name: "Pleated Skirt",
-        price: 15.99,
+        price: 49.99,
         image: "images/clothes/pleated-skirt-removebg-preview.png",
         category: "clothes",
         model: "Models/Products/clothes/pleated_skirt.glb",
-        description: "Stylish pleated skirt for a chic look."
+        description: "A stylish pleated skirt with a flattering cut, ideal for creating elegant or casual-chic outfits."
     },
     {
         id: 6,
         name: "Tailcoat Suit",
-        price: 45.99,
+        price: 199.99,
         image: "images/clothes/tailcoat-suit-removebg-preview.png",
         category: "clothes",
         model: "Models/Products/clothes/fancy_tailcoat_suit.glb",
-        description: "Formal tailcoat suit for special events."
+        description: "A sophisticated tailcoat suit tailored for formal ceremonies and exclusive events, delivering elegance and prestige."
     },
     {
         id: 7,
         name: "Stylish Sneakers",
-        price: 59.99,
+        price: 89.99,
         image: "images/shoes/sneakers.png",
         category: "shoes",
         model: "Models/Shoes/sneakers.glb",
-        description: "Comfortable and stylish sneakers."
+        description: "Modern sneakers designed for all-day comfort, featuring a sleek design that blends performance and street style."
     },
     {
         id: 8,
         name: "Leather Boots",
-        price: 129.99,
+        price: 159.99,
         image: "images/shoes/boots-removebg-preview.png",
         category: "shoes",
         model: "Models/Shoes/leather_boots.glb",
-        description: "Durable leather boots for all seasons."
+        description: "High-quality leather boots built for durability and comfort, suitable for both urban wear and outdoor use."
     },
     {
         id: 9,
         name: "Classic Loafers",
-        price: 89.99,
+        price: 119.99,
         image: "images/shoes/loafers-removebg-preview.png",
         category: "shoes",
         model: "Models/Shoes/leather_womens_shoes.glb",
-        description: "Classic loafers for formal occasions."
+        description: "Elegant classic loafers crafted from premium materials, perfect for formal settings and professional environments."
     },
     {
         id: 10,
         name: "Elegant High Heels",
-        price: 99.99,
+        price: 139.99,
         image: "images/shoes/high-heels.png",
         category: "shoes",
         model: "Models/Shoes/heel-shoe.glb",
-        description: "Elegant high heels for evening wear."
+        description: "Sophisticated high heels designed to enhance evening and formal outfits with elegance and confidence."
     },
     {
         id: 11,
         name: "Classic Oxfords",
-        price: 109.99,
+        price: 149.99,
         image: "images/shoes/oxfords.png",
         category: "shoes",
         model: "Models/Shoes/oxfords.glb",
-        description: "Classic oxford shoes for business attire."
+        description: "Traditional oxford shoes with a polished finish, ideal for business attire and formal occasions."
     },
     {
         id: 12,
         name: "Casual Slip-ons",
-        price: 49.99,
+        price: 69.99,
         image: "images/shoes/slip-on.png",
         category: "shoes",
         model: "Models/Shoes/slip-on.glb",
-        description: "Casual slip-on shoes for easy wear."
+        description: "Lightweight and comfortable slip-on shoes, designed for effortless everyday wear and relaxed lifestyles."
     }
 ];
