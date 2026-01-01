@@ -15,7 +15,7 @@ const products = [
         price: 49.99,
         image: "images/clothes/denim-jacket-removebg-preview.png",
         category: "clothes",
-        model: "Models/Products/clothes/denim_jacket.glb",
+        model: "Models/Products/clothes/modern_denim_jacket.glb",
         description: "Classic denim jacket for casual style."
     },
     {
@@ -24,7 +24,7 @@ const products = [
         price: 79.99,
         image: "images/clothes/gold-dress-removebg-preview.png",
         category: "clothes",
-        model: "Models/Products/clothes/gold_dress.glb",
+        model: "Models/Products/clothes/female-dress.glb",
         description: "Elegant golden dress for special occasions."
     },
     {
@@ -51,7 +51,7 @@ const products = [
         price: 45.99,
         image: "images/clothes/tailcoat-suit-removebg-preview.png",
         category: "clothes",
-        model: "Models/Products/clothes/tailcoat_suit.glb",
+        model: "Models/Products/clothes/fancy_tailcoat_suit.glb",
         description: "Formal tailcoat suit for special events."
     },
     {
@@ -78,7 +78,7 @@ const products = [
         price: 89.99,
         image: "images/shoes/loafers-removebg-preview.png",
         category: "shoes",
-        model: "Models/Shoes/loafers.glb",
+        model: "Models/Shoes/leather_womens_shoes.glb",
         description: "Classic loafers for formal occasions."
     },
     {
@@ -87,7 +87,7 @@ const products = [
         price: 99.99,
         image: "images/shoes/high-heels.png",
         category: "shoes",
-        model: "Models/Shoes/high_heels.glb",
+        model: "Models/Shoes/heel-shoe.glb",
         description: "Elegant high heels for evening wear."
     },
     {
@@ -105,7 +105,7 @@ const products = [
         price: 49.99,
         image: "images/shoes/slip-on.png",
         category: "shoes",
-        model: "Models/Shoes/slip_ons.glb",
+        model: "Models/Shoes/slip-on.glb",
         description: "Casual slip-on shoes for easy wear."
     }
 ];
