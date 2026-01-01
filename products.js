@@ -2,7 +2,7 @@
 const products = [
     {
         id: 1,
-        name: "Caro Flannel",
+        name: "Caro Flannel 2",
         price: 25.99,
         image: "images/clothes/caro-flannel-shirt-removebg-preview.png",
         category: "clothes",
