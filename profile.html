@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .profile-pic {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .stat-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .order-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-delivered {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-shipped {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen pb-24">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl">
+                <i class="fas fa-arrow-left text-gray-700"></i>
+            </a>
+            <h1 class="text-lg font-semibold">My Profile</h1>
+            <button id="editProfileBtn" class="text-blue-600 font-medium text-sm">
+                Edit
+            </button>
+        </div>
+    </header>
+    
+    <!-- Profile Section -->
+    <main class="px-4">
+        <!-- Profile Info Card -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mt-4">
+            <div class="flex flex-col items-center mb-6">
+                <div class="profile-pic w-24 h-24 rounded-full flex items-center justify-center text-white text-4xl font-bold mb-4">
+                    JD
+                </div>
+                <h2 class="text-xl font-bold">John Doe</h2>
+                <p class="text-gray-500 text-sm">john.doe@example.com</p>
+                <p class="text-gray-500 text-sm mt-1">📱 +258 84 123 4567</p>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="stat-card bg-blue-50 rounded-xl p-4 text-center">
+                    <p class="text-2xl font-bold text-blue-600" id="ordersCount">0</p>
+                    <p class="text-xs text-gray-600 mt-1">Orders</p>
+                </div>
+                <div class="stat-card bg-green-50 rounded-xl p-4 text-center">
+                    <p class="text-2xl font-bold text-green-600" id="wishlistCount">0</p>
+                    <p class="text-xs text-gray-600 mt-1">Wishlist</p>
+                </div>
+                <div class="stat-card bg-purple-50 rounded-xl p-4 text-center">
+                    <p class="text-2xl font-bold text-purple-600" id="cartCount">0</p>
+                    <p class="text-xs text-gray-600 mt-1">Cart</p>
+                </div>
+            </div>
+            
+            <!-- Address -->
+            <div class="border-t pt-4">
+                <h3 class="font-semibold mb-2">Delivery Address</h3>
+                <p class="text-gray-600 text-sm">
+                    <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                    <span id="userAddress">Av. 25 de Setembro, Maputo, Mozambique</span>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Menu Options -->
+        <div class="bg-white rounded-2xl shadow-sm mt-4 overflow-hidden">
+            <a href="orders.html" class="flex items-center justify-between p-4 border-b hover:bg-gray-50">
+                <div class="flex items-center">
+                    <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-shopping-bag text-blue-600"></i>
+                    </div>
+                    <span class="font-medium">My Orders</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </a>
+            
+            <a href="#" class="flex items-center justify-between p-4 border-b hover:bg-gray-50">
+                <div class="flex items-center">
+                    <div class="bg-green-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-heart text-green-600"></i>
+                    </div>
+                    <span class="font-medium">Wishlist</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </a>
+            
+            <a href="cart.html" class="flex items-center justify-between p-4 border-b hover:bg-gray-50">
+                <div class="flex items-center">
+                    <div class="bg-red-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-shopping-cart text-red-600"></i>
+                    </div>
+                    <span class="font-medium">Shopping Cart</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </a>
+            
+            <a href="#" class="flex items-center justify-between p-4 border-b hover:bg-gray-50">
+                <div class="flex items-center">
+                    <div class="bg-yellow-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-bell text-yellow-600"></i>
+                    </div>
+                    <span class="font-medium">Notifications</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center mr-2">3</span>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </a>
+            
+            <a href="#" class="flex items-center justify-between p-4 border-b hover:bg-gray-50">
+                <div class="flex items-center">
+                    <div class="bg-purple-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-cog text-purple-600"></i>
+                    </div>
+                    <span class="font-medium">Settings</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </a>
+            
+            <button id="logoutBtn" class="flex items-center justify-between p-4 w-full text-left hover:bg-gray-50">
+                <div class="flex items-center">
+                    <div class="bg-gray-100 p-2 rounded-lg mr-3">
+                        <i class="fas fa-sign-out-alt text-gray-600"></i>
+                    </div>
+                    <span class="font-medium text-gray-700">Logout</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </button>
+        </div>
+        
+        <!-- Recent Orders -->
+        <div class="bg-white rounded-2xl shadow-sm mt-4 p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-semibold">Recent Orders</h3>
+                <a href="orders.html" class="text-blue-600 text-sm font-medium">View All</a>
+            </div>
+            
+            <div id="recentOrders">
+                <!-- Orders will be loaded here dynamically -->
+                <div class="text-center py-6 text-gray-500">
+                    <i class="fas fa-shopping-bag text-4xl mb-3 opacity-20"></i>
+                    <p>No orders yet</p>
+                    <a href="index.html" class="text-blue-600 text-sm mt-2 inline-block">Start Shopping</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-semibold">Edit Profile</h3>
+                <button id="closeModalBtn" class="text-gray-500 text-xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="profileForm">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                    <input type="text" id="editName" 
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           placeholder="Enter your name">
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="editEmail" 
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           placeholder="Enter your email">
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                    <input type="tel" id="editPhone" 
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           placeholder="Enter your phone number">
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                    <textarea id="editAddress" rows="3"
+                              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              placeholder="Enter your delivery address"></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-gray-800 transition-colors">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md">
+        <div class="flex justify-around py-3 text-xs">
+            <a href="index.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-home text-lg"></i>
+                <span class="mt-1">Home</span>
+            </a>
+            
+            <a href="cart.html" class="flex flex-col items-center text-gray-500 relative">
+                <i class="fas fa-shopping-cart text-lg"></i>
+                <span class="mt-1">Cart</span>
+                <span id="navCartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden"></span>
+            </a>
+            
+            <a href="profile.html" class="flex flex-col items-center text-red-500">
+                <i class="fas fa-user text-lg"></i>
+                <span class="mt-1">Profile</span>
+            </a>
+        </div>
+    </nav>
+    
+    <script>
+        // User Data Management
+        const USER_KEY = 'clothes_store_user';
+        const ORDERS_KEY = 'clothes_store_orders';
+        
+        // Default user data
+        const defaultUser = {
+            name: 'John Doe',
+            email: 'john.doe@example.com',
+            phone: '+258 84 123 4567',
+            address: 'Av. 25 de Setembro, Maputo, Mozambique',
+            initials: 'JD'
+        };
+        
+        // Initialize user data in localStorage
+        function initializeUserData() {
+            if (!localStorage.getItem(USER_KEY)) {
+                localStorage.setItem(USER_KEY, JSON.stringify(defaultUser));
+            }
+            
+            if (!localStorage.getItem(ORDERS_KEY)) {
+                localStorage.setItem(ORDERS_KEY, JSON.stringify([]));
+            }
+        }
+        
+        // Get user data
+        function getUserData() {
+            return JSON.parse(localStorage.getItem(USER_KEY)) || defaultUser;
+        }
+        
+        // Update user data
+        function updateUserData(updatedData) {
+            localStorage.setItem(USER_KEY, JSON.stringify(updatedData));
+        }
+        
+        // Get orders data
+        function getOrders() {
+            return JSON.parse(localStorage.getItem(ORDERS_KEY)) || [];
+        }
+        
+        // Get cart count
+        function getCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            return cart.reduce((total, item) => total + item.quantity, 0);
+        }
+        
+        // Get wishlist count
+        function getWishlistCount() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            return wishlist.length;
+        }
+        
+        // Render user data
+        function renderUserData() {
+            const user = getUserData();
+            
+            // Update profile info
+            document.querySelector('.profile-pic').textContent = user.initials || 'JD';
+            document.querySelector('h2').textContent = user.name;
+            document.querySelector('p:nth-of-type(2)').textContent = user.email;
+            document.querySelector('p:nth-of-type(3)').textContent = user.phone;
+            document.getElementById('userAddress').textContent = user.address;
+            
+            // Update form fields
+            document.getElementById('editName').value = user.name;
+            document.getElementById('editEmail').value = user.email;
+            document.getElementById('editPhone').value = user.phone;
+            document.getElementById('editAddress').value = user.address;
+        }
+        
+        // Render stats
+        function renderStats() {
+            const orders = getOrders();
+            const cartCount = getCartCount();
+            const wishlistCount = getWishlistCount();
+            
+            document.getElementById('ordersCount').textContent = orders.length;
+            document.getElementById('wishlistCount').textContent = wishlistCount;
+            document.getElementById('cartCount').textContent = cartCount;
+            document.getElementById('navCartCount').textContent = cartCount;
+            
+            // Show/hide cart badge
+            const navCartBadge = document.getElementById('navCartCount');
+            if (cartCount > 0) {
+                navCartBadge.classList.remove('hidden');
+            } else {
+                navCartBadge.classList.add('hidden');
+            }
+        }
+        
+        // Render recent orders
+        function renderRecentOrders() {
+            const orders = getOrders();
+            const recentOrdersContainer = document.getElementById('recentOrders');
+            
+            if (orders.length === 0) {
+                return; // Keep the default "no orders" message
+            }
+            
+            // Sort by date (most recent first) and take first 3
+            const sortedOrders = orders.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+            
+            let ordersHTML = '';
+            
+            sortedOrders.forEach(order => {
+                // Calculate total
+                const total = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 50; // + delivery
+                
+                // Format date
+                const orderDate = new Date(order.date);
+                const formattedDate = orderDate.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                
+                // Get status class
+                let statusClass = 'status-pending';
+                if (order.status === 'delivered') statusClass = 'status-delivered';
+                if (order.status === 'shipped') statusClass = 'status-shipped';
+                
+                ordersHTML += `
+                    <div class="border-b border-gray-100 pb-3 mb-3 last:border-0 last:pb-0 last:mb-0">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-medium">Order #${order.id.toString().slice(-6)}</p>
+                                <p class="text-gray-500 text-sm">${formattedDate}</p>
+                            </div>
+                            <span class="${statusClass}">${order.status}</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-sm text-gray-600">
+                                ${order.items.length} item${order.items.length > 1 ? 's' : ''}
+                            </p>
+                            <p class="font-semibold">${total.toFixed(2)} MT</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            recentOrdersContainer.innerHTML = ordersHTML;
+        }
+        
+        // Generate initials from name
+        function getInitials(name) {
+            return name.split(' ')
+                .map(part => part.charAt(0))
+                .join('')
+                .toUpperCase()
+                .slice(0, 2);
+        }
+        
+        // Modal functions
+        function openEditModal() {
+            document.getElementById('editProfileModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeEditModal() {
+            document.getElementById('editProfileModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // In a real app, you would clear session/tokens
+                // For this demo, we'll just redirect to home
+                window.location.href = 'index.html';
+            }
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize data
+            initializeUserData();
+            
+            // Render data
+            renderUserData();
+            renderStats();
+            renderRecentOrders();
+            
+            // Event Listeners
+            document.getElementById('editProfileBtn').addEventListener('click', openEditModal);
+            document.getElementById('closeModalBtn').addEventListener('click', closeEditModal);
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            
+            // Close modal when clicking outside
+            document.getElementById('editProfileModal').addEventListener('click', (e) => {
+                if (e.target.id === 'editProfileModal') {
+                    closeEditModal();
+                }
+            });
+            
+            // Form submission
+            document.getElementById('profileForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('editName').value;
+                const email = document.getElementById('editEmail').value;
+                const phone = document.getElementById('editPhone').value;
+                const address = document.getElementById('editAddress').value;
+                
+                // Update user data
+                const updatedUser = {
+                    name,
+                    email,
+                    phone,
+                    address,
+                    initials: getInitials(name)
+                };
+                
+                updateUserData(updatedUser);
+                renderUserData();
+                
+                // Close modal
+                closeEditModal();
+                
+                // Show success message
+                alert('Profile updated successfully!');
+            });
+        });
+    </script>
+</body>
+</html>
