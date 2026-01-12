@@ -60,7 +60,7 @@ const products = [
         price: 89.99,
         image: "images/shoes/sneakers.png",
         category: "shoes",
-        model: "Models/Shoes/sneakers.glb",
+        model: "Models/Products/shoes/sneakers.glb",
         description: "Modern sneakers designed for all-day comfort, featuring a sleek design that blends performance and street style."
     },
     {
@@ -69,16 +69,16 @@ const products = [
         price: 159.99,
         image: "images/shoes/boots-removebg-preview.png",
         category: "shoes",
-        model: "Models/Shoes/leather_boots.glb",
+        model: "Models/Products/shoes/leather_boots.glb",
         description: "High-quality leather boots built for durability and comfort, suitable for both urban wear and outdoor use."
     },
     {
         id: 9,
         name: "Classic Loafers",
         price: 119.99,
-        image: "images/shoes/loafers-removebg-preview.png",
+        image: "images/Products/shoes/loafers-removebg-preview.png",
         category: "shoes",
-        model: "Models/Shoes/leather_womens_shoes.glb",
+        model: "Models/Products/shoes/leather_womens_shoes.glb",
         description: "Elegant classic loafers crafted from premium materials, perfect for formal settings and professional environments."
     },
     {
@@ -87,7 +87,7 @@ const products = [
         price: 139.99,
         image: "images/shoes/high-heels.png",
         category: "shoes",
-        model: "Models/Shoes/heel-shoe.glb",
+        model: "Models/Products/shoes/heel-shoe.glb",
         description: "Sophisticated high heels designed to enhance evening and formal outfits with elegance and confidence."
     },
     {
@@ -96,7 +96,7 @@ const products = [
         price: 149.99,
         image: "images/shoes/oxfords.png",
         category: "shoes",
-        model: "Models/Shoes/oxfords.glb",
+        model: "Models/Products/shoes/oxfords.glb",
         description: "Traditional oxford shoes with a polished finish, ideal for business attire and formal occasions."
     },
     {
@@ -105,7 +105,7 @@ const products = [
         price: 69.99,
         image: "images/shoes/slip-on.png",
         category: "shoes",
-        model: "Models/Shoes/slip-on.glb",
+        model: "Models/Products/shoes/slip-on.glb",
         description: "Lightweight and comfortable slip-on shoes, designed for effortless everyday wear and relaxed lifestyles."
     }
 ];
