@@ -76,7 +76,7 @@ const products = [
         id: 9,
         name: "Classic Loafers",
         price: 119.99,
-        image: "images/Products/shoes/loafers-removebg-preview.png",
+        image: "images/shoes/loafers-removebg-preview.png",
         category: "shoes",
         model: "Models/Products/shoes/leather_womens_shoes.glb",
         description: "Elegant classic loafers crafted from premium materials, perfect for formal settings and professional environments."
