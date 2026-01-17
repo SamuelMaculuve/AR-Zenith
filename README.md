@@ -137,6 +137,32 @@ A fully dynamic, mobile-first e-commerce platform with AR product visualization 
 9. **Shipping Calculator**: Dynamic shipping costs
 10. **Promo Codes**: Discount code functionality
 
+### **Technologies, Frameworks & Libraries
+- **Core Web Technologies**:
+  - HTML5: Semantic markup and page structure
+  - CSS3: Advanced styling with Flexbox and Grid layouts
+  - Vanilla JavaScript (ES6+): All interactive features without heavy frameworks
+  - WebGL: 3D graphics rendering in the browser
+  - WebXR API: Augmented Reality capabilities
+  - GLB/GLTF: 3D model formats for web display
+    
+- **Frontend Frameworks & Libraries**:
+  - Tailwind CSS: Utility-first CSS framework for rapid responsive UI development
+  - Google Model Viewer: Core library for 3D model rendering and AR experiences
+  - Google Fonts (Montserrat): Modern, readable typography system
+ 
+- **Backend Frameworks & Libraries**:
+  - Laravel: A powerful PHP framework for building robust web applications and APIs. It provides an elegant syntax, built-in authentication, and seamless database integration, making it ideal for handling e-commerce operations, user management, and order processing.
+  - SQL (Structured Query Language): The standard language for managing and manipulating relational databases. It is used for storing product data, user information, orders, and other critical business data in a structured and efficient manner. SQL databases (like MySQL or PostgreSQL) ensure data integrity and support complex queries for reporting and analysis.
+    
+- **3D/AR Technology Stack**:
+  - 3D/AR Technology Stack
+  - Google Model Viewer: Handles WebGL rendering and AR session management
+  - WebXR Device API: Interface with AR-capable devices
+  - GL Transmission Format: Efficient 3D asset delivery
+  - Scene Viewer: Android native AR integration
+  - Quick Look: iOS AR integration
+
 ## **Setup Instructions**
 1. Place all files in proper directory structure
 2. Ensure product images and 3D models are in correct paths
