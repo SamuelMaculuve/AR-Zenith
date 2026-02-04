@@ -33,7 +33,7 @@ const products = [
         price: 69.99,
         image: "images/clothes/sweatshirt.png",
         category: "clothes",
-        model: "Models/Products/clothes/sweatshirt.glb",
+        model: "Models/Products/clothes/basic_sweatshirt.glb",
         description: "A soft and comfortable sweatshirt made for everyday wear, combining warmth, durability, and a clean contemporary style."
     },
     {
