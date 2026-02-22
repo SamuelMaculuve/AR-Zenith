@@ -105,7 +105,7 @@ const products = [
         price: 69.99,
         image: "images/shoes/slip-on.png",
         category: "shoes",
-        model: "Models/Products/shoes/slip-on.glb",
+        model: "Models/Products/couch.glb",
         description: "Lightweight and comfortable slip-on shoes, designed for effortless everyday wear and relaxed lifestyles."
     }
 ];
