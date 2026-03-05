@@ -114,7 +114,7 @@ const products = [
         price: 69.99,
         image: "images/extra/adjustable_desk.png",
         category: "shoes",
-        model: "Models/Products/extra/adjustable_desk.png",
+        model: "Models/Products/extra/adjustable_desk.glb",
         description: "Lorem"
     }
 ];
