@@ -107,7 +107,8 @@ const products = [
         category: "shoes",
         model: "Models/Products/couch.glb",
         description: "Lightweight and comfortable slip-on shoes, designed for effortless everyday wear and relaxed lifestyles."
-    },{
+    },
+    {
     id: 13,
     name: "Adjustable Desk",
     price: 129.99,
